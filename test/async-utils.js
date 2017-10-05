@@ -123,4 +123,32 @@ describe('async-utils', () => {
   describe('.each', () => {
 
   });
+
+  describe('.successful', () => {
+    it('returns an array of successfully executions', async() => {
+      const results = await asyncify.successful([
+        Promise.resolve('a'),
+        Promise.resolve('b'),
+        Promise.resolve('c')
+      ]);
+
+      expect(results[0]).equals('a');
+      expect(results[1]).equals('b');
+      expect(results[2]).equals('c');
+    });
+
+    it('returns errors in place of failures', async() => {
+      const results = await asyncify.successful([
+        Promise.resolve('a'),
+        Promise.reject(new Error('b failed')),
+        Promise.resolve('c'),
+        Promise.reject(new Error('d failed')),
+      ]);
+
+      expect(results[0]).equals('a');
+      expect(results[1].message).equals('b failed');
+      expect(results[2]).equals('c');
+      expect(results[3].message).equals('d failed');
+    });
+  });
 });
