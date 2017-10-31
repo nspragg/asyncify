@@ -7,6 +7,17 @@ async function double(n) {
   return n << 1;
 }
 
+function createTask(name, arr, timeout) {
+  return async() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        arr.push(name);
+        resolve(`done->${name}`);
+      }, timeout);
+    });
+  }
+}
+
 describe('async-utils', () => {
   describe('.waterfall', async() => {
     it('executes an array of async functions asynchronously', async() => {
@@ -14,10 +25,10 @@ describe('async-utils', () => {
       expect(results).to.deep.equal(80);
     });
 
-    // it.only('supports var args', async() => {
-    //   const results = await asyncify.waterfall(double.bind(null, 10), double, double);
-    //   expect(results).to.deep.equal(80);
-    // });
+    it('supports var args', async() => {
+      const results = await asyncify.waterfall(double.bind(null, 10), double, double);
+      expect(results).to.deep.equal(80);
+    });
   });
 
   describe('.map', async() => {
@@ -104,7 +115,31 @@ describe('async-utils', () => {
   });
 
   describe('.parallel', () => {
+    it('executes an array of async functions in parallel', async() => {
+      const order = [];
+      await asyncify.parallel([
+        createTask('a', order, 100),
+        createTask('b', order, 250),
+        createTask('c', order, 20),
+      ]);
+      expect(order).to.deep.equal(['c', 'a', 'b']);
+    });
 
+    it('executes an object of async functions in parallel', async() => {
+      const order = [];
+      const results = await asyncify.parallel({
+        a: createTask('a', order, 100),
+        b: createTask('b', order, 250),
+        c: createTask('c', order, 20),
+      });
+
+      expect(order).to.deep.equal(['c', 'a', 'b']);
+      expect(results).to.deep.equal({
+        a: 'done->a',
+        b: 'done->b',
+        c: 'done->c'
+      });
+    });
   });
 
   describe('.filter', () => {
@@ -121,6 +156,14 @@ describe('async-utils', () => {
   });
 
   describe('.each', () => {
+
+  });
+
+  describe('.delayedResolve', () => {
+
+  });
+
+  describe('.delayedReject', () => {
 
   });
 
