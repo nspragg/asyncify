@@ -4,22 +4,29 @@
   "description": "async util",
   "main": "index.js",
   "scripts": {
-    "test": "mocha && npm run lint",
+    "test": "jest",
     "lint": "eslint ."
   },
   "engines": {
     "node": ">=6.0.0"
   },
-  "keywords": ["async", "promise", "map", "filter", "reduce"],
+  "keywords": [
+    "async",
+    "promise",
+    "map",
+    "filter",
+    "reduce"
+  ],
+  "jest": {
+    "testEnvironment": "node"
+  },
   "license": "Apache-2.0",
   "devDependencies": {
-    "chai": "^4.1.2",
     "eslint": "^4.1.1",
     "eslint-config-iplayer-es6": "^3.1.0",
-    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-jest": "^21.3.2",
     "istanbul": "^0.4.1",
-    "mocha": "^3.3.0",
-    "nock": "^9.0.14"
+    "jest": "^21.2.1"
   },
   "dependencies": {},
   "eslintConfig": {
