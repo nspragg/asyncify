@@ -1,0 +1,3 @@
+describe('.delayedResolve', () => {
+  it();
+});

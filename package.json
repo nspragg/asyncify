@@ -1,7 +1,7 @@
 {
-  "name": "async-util",
+  "name": "asyncify",
   "version": "1.0.0",
-  "description": "async util",
+  "description": "async functions",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -10,15 +10,10 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "keywords": [
-    "async",
-    "promise",
-    "map",
-    "filter",
-    "reduce"
-  ],
+  "keywords": ["async", "promise", "map", "filter", "reduce"],
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": ["__tests__/utils/"]
   },
   "license": "Apache-2.0",
   "devDependencies": {
