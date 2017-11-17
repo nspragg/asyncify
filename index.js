@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/async-utils');
+module.exports = require('./lib/asyncify');

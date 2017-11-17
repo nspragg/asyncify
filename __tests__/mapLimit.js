@@ -2,7 +2,7 @@
 
 const asyncify = require('../lib/asyncify');
 const double = require('./utils/functions');
-const ExecutorError = require('./../lib/ExecutorError');
+const ExecutorError = require('./../lib/private/ExecutorError');
 
 describe('.mapLimit', () => {
   it('map each element', async () => {
@@ -72,7 +72,7 @@ describe('.mapLimit', () => {
     try {
       await asyncify.mapLimit(
         [10, 0, 30],
-        (n) => {
+        async (n) => {
           calls++;
           if (n === 0) throw new Error('div by zero');
           return 10 / n;
@@ -85,6 +85,18 @@ describe('.mapLimit', () => {
     }
   });
 
+  it('supports synchronous functions', async () => {
+    const results = await asyncify.mapLimit(
+      [10, 20, 30],
+      (n) => {
+        return n * 2;
+      },
+      1
+    );
+    expect(results).toEqual([20, 40, 60]);
+  });
+
   it('map');
+
   it('set');
 });

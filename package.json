@@ -10,18 +10,10 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "keywords": [
-    "async",
-    "promise",
-    "map",
-    "filter",
-    "reduce"
-  ],
+  "keywords": ["async", "promise", "map", "filter", "reduce"],
   "jest": {
     "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "__tests__/utils/"
-    ]
+    "testPathIgnorePatterns": ["__tests__/utils/"]
   },
   "license": "Apache-2.0",
   "devDependencies": {
@@ -31,7 +23,9 @@
     "istanbul": "^0.4.1",
     "jest": "^21.2.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "filehound": "^1.16.2"
+  },
   "eslintConfig": {
     "extends": "iplayer-es6",
     "parserOptions": {
