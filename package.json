@@ -10,10 +10,18 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "keywords": ["async", "promise", "map", "filter", "reduce"],
+  "keywords": [
+    "async",
+    "promise",
+    "map",
+    "filter",
+    "reduce"
+  ],
   "jest": {
     "testEnvironment": "node",
-    "testPathIgnorePatterns": ["__tests__/utils/"]
+    "testPathIgnorePatterns": [
+      "__tests__/utils/"
+    ]
   },
   "license": "Apache-2.0",
   "devDependencies": {
