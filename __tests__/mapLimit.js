@@ -16,8 +16,9 @@ describe('.mapLimit', () => {
   });
 
   it('limit zero', async () => {
+    const input = [10, 20, 30];
     const results = await asyncify.mapLimit(
-      [10, 20, 30],
+      input,
       async () => {
         throw new Error('fn was called unexpectedly');
       },

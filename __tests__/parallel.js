@@ -1,11 +1,10 @@
 'use strict';
 
 const asyncify = require('../lib/asyncify');
-const double = require('./utils/functions');
 
 function createTask(name, arr, timeout) {
   return async () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         arr.push(name);
         resolve(`done->${name}`);

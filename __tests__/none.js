@@ -1,5 +1,5 @@
 'use strict';
 
-describe('.each', () => {
+describe('.none', () => {
   it();
 });

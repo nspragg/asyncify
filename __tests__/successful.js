@@ -1,7 +1,6 @@
 'use strict';
 
 const asyncify = require('../lib/asyncify');
-const double = require('./utils/functions');
 
 describe('.successful', () => {
   it('returns an array of successfully executions', async () => {

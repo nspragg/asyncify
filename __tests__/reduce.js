@@ -1,7 +1,6 @@
 'use strict';
 
 const asyncify = require('../lib/asyncify');
-const double = require('./utils/functions');
 
 describe('.reduce', () => {
   async function sum(acc, value) {
