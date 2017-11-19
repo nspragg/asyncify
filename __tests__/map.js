@@ -20,7 +20,7 @@ describe('.map', async () => {
     expect(results).toEqual([]);
   });
 
-  it('map of element of an Object', async () => {
+  it('map of value of an Object', async () => {
     const obj = {
       a: 10,
       b: 20,

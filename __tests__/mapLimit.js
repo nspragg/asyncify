@@ -89,7 +89,7 @@ describe('.mapLimit', () => {
   it('supports synchronous functions', async () => {
     const results = await asyncify.mapLimit(
       [10, 20, 30],
-      (n) => {
+      async (n) => {
         return n * 2;
       },
       1

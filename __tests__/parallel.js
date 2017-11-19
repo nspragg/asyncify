@@ -12,22 +12,28 @@ function createTask(name, arr, timeout) {
     });
   };
 }
+
 describe('.parallel', () => {
   it('executes an array of async functions in parallel', async () => {
-    const order = [];
-    await asyncify.parallel([createTask('a', order, 100), createTask('b', order, 250), createTask('c', order, 20)]);
-    expect(order).toEqual(['c', 'a', 'b']);
+    const callOrder = [];
+    const results = await asyncify.parallel([
+      createTask('a', callOrder, 100),
+      createTask('b', callOrder, 250),
+      createTask('c', callOrder, 20)
+    ]);
+    expect(callOrder).toEqual(['c', 'a', 'b']);
+    expect(results).toEqual(['done->c', 'done->a', 'done->b']);
   });
 
   it('executes an object of async functions in parallel', async () => {
-    const order = [];
+    const callOrder = [];
     const results = await asyncify.parallel({
-      a: createTask('a', order, 100),
-      b: createTask('b', order, 250),
-      c: createTask('c', order, 20)
+      a: createTask('a', callOrder, 100),
+      b: createTask('b', callOrder, 250),
+      c: createTask('c', callOrder, 20)
     });
 
-    expect(order).toEqual(['c', 'a', 'b']);
+    expect(callOrder).toEqual(['c', 'a', 'b']);
     expect(results).toEqual({
       a: 'done->a',
       b: 'done->b',
