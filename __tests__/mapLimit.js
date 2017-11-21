@@ -96,8 +96,4 @@ describe('.mapLimit', () => {
     );
     expect(results).toEqual([20, 40, 60]);
   });
-
-  it('map');
-
-  it('set');
 });
