@@ -4,7 +4,11 @@ const asyncify = require('../lib/asyncify');
 
 describe('.successful', () => {
   it('returns an array of successfully executions', async () => {
-    const results = await asyncify.successful([Promise.resolve('a'), Promise.resolve('b'), Promise.resolve('c')]);
+    const results = await asyncify.successful([
+      Promise.resolve('a'),
+      Promise.resolve('b'),
+      Promise.resolve('c')
+    ]);
 
     expect(results[0]).toBe('a');
     expect(results[1]).toBe('b');

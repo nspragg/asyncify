@@ -7,7 +7,7 @@ Async util functions
 ```
 npm install --save asyncify
 ```
- 
+
 ## Usage
 
 ```js
